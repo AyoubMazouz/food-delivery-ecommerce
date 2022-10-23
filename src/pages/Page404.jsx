@@ -1,7 +1,10 @@
-import React from "react"
+import React from "react";
 
 const Page404 = () => {
-	return <div>404</div>
-}
+    React.useEffect(() => {
+        document.title = "Burgelo - 404 Page Not Found";
+    }, []);
+    return <div>404</div>;
+};
 
-export default Page404
+export default Page404;

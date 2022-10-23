@@ -1,3 +1,51 @@
+@import url('https://fonts.googleapis.com/css2?family=Oswald:wght@200;300;400;600&display=swap');
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+
+@layer base {
+    * {
+        @apply font-oswald;
+    }
+    body {
+        @apply bg-light text-dark tracking-wider text-lg;
+    }
+}
+
+@layer components {
+    .nav-icon {
+        @apply hover:text-primary transition-all duration-300 cursor-pointer
+    }
+    .form-input {
+        @apply px-3 py-2 ring-dark/25 ring-2 focus:outline-none focus:ring-2 mt-1 focus:ring-primary disabled:bg-secondary disabled:text-dark/50 rounded w-full resize-y;
+    }
+    .form-label {
+        @apply font-light;
+    }
+    .btn {
+        @apply bg-primary py-2 px-4 uppercase shadow-md rounded disabled:bg-primary/50 disabled:cursor-wait font-semibold;
+    }
+    .btn-danger {
+        @apply btn bg-danger disabled:bg-danger/50;
+    }
+    .btn-info {
+        @apply btn bg-info disabled:bg-info/50;
+    }
+    .btn-success {
+        @apply btn bg-success disabled:bg-success/50;
+    }
+    .model-header {
+        @apply mb-8 text-3xl
+    }
+    .icon-bin {
+        @apply scale-[1.6] text-danger hover:text-danger-dark transition-all duration-300 cursor-pointer
+    }
+    .icon-edit {
+        @apply scale-[1.6] text-info hover:text-info-dark transition-all duration-300 cursor-pointer
+    }
+}
+
+.nth-child:nth-child(odd) {
+    @apply bg-secondary
+}
