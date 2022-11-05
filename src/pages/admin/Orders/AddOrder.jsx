@@ -68,7 +68,7 @@ const AddOrder = () => {
         newOrderLs.forEach((order) => {
             if (order.id === id) {
                 order.quantity = e.target.value;
-                if (order.quantity == 0) order.quantity = 1;
+                if (order.quantity === 0) order.quantity = 1;
             }
         });
         setOrders(newOrderLs);
@@ -89,7 +89,7 @@ const AddOrder = () => {
         });
 
         try {
-            await addOrder(fullName, phone, note, address, ordersLs);
+            await addOrder(fullName, phone, address, note, ordersLs);
             setAlert(["success", "Order has been added successfully!"]);
         } catch (err) {
             if (err === "id_taken")
@@ -125,7 +125,7 @@ const AddOrder = () => {
                     Phone
                 </label>
                 <input
-                    type="text"
+                    type="tel"
                     name="phone"
                     required
                     placeholder="Phone number..."
@@ -181,7 +181,6 @@ const AddOrder = () => {
                                     value={order.size}
                                     onChange={(e) => optionHandler(e, order.id)}
                                 >
-                                    <option value="">select a size</option>
                                     {order.sizes &&
                                         order.sizes.map((size) => (
                                             <option value={size.label}>
@@ -223,11 +222,9 @@ const AddOrder = () => {
                         name="item"
                         className="form-input"
                         required
-                        placeholder="select an item"
                         value={selectedItem}
                         onChange={(e) => setSelectedItem(e.target.value)}
                     >
-                        <option value={""}>select an item</option>
                         {itemsLs &&
                             itemsLs.map((item) => (
                                 <option value={item.id}>{item.id}</option>

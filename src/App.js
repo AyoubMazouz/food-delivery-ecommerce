@@ -4,6 +4,7 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 // Contexts.
 import { AuthProvider } from "./contexts/AuthContext";
 import { AlertProvider } from "./contexts/AlertContext";
+import { CartProvider } from "./contexts/CartContext";
 // Components.
 import PrivateRoute from "./components/PrivateRoute";
 import Navbar from "./components/NavBar";
@@ -20,38 +21,72 @@ import Settings from "./pages/admin/Settings";
 import Footer from "./components/Footer";
 import Contact from "./pages/Contact";
 import MenuPage from "./pages/MenuPage";
+import ItemView from "./pages/ItemView";
+import CartPage from "./pages/CartPage";
+import Checkout from "./pages/Checkout";
+import OrderComplete from "./pages/OrderComplete";
+import MessageSent from "./pages/MessageSent";
 
 const App = () => {
     return (
         <BrowserRouter>
             <AuthProvider>
-                <AlertProvider>
-                    <Navbar />
-                    <Routes>
-                        <Route path="/" element={<Home />} />
-                        <Route path="/menu" element={<MenuPage />} />
-                        <Route path="/contact" element={<Contact />} />
-                        <Route path="/login" element={<LogIn />} />
-                        {/* Private Routes */}
-                        <Route element={<PrivateRoute />}>
-                            <Route path="/admin" element={<Dashboard />} />
-                            <Route path="/admin/orders" element={<Orders />} />
-                            <Route path="/admin/items" element={<Items />} />
+                <CartProvider>
+                    <AlertProvider>
+                        <Navbar />
+                        <Routes>
+                            <Route path="/" element={<Home />} />
+                            <Route path="/contact" element={<Contact />} />
                             <Route
-                                path="/admin/messages"
-                                element={<Messages />}
+                                path="/contact/thank-you"
+                                element={<MessageSent />}
                             />
-                            <Route path="/admin/emails" element={<Emails />} />
+                            <Route path="/menu" element={<MenuPage />} />
+                            <Route path="/menu/:tab" element={<MenuPage />} />
+                            <Route path="/menu/cart" element={<CartPage />} />
                             <Route
-                                path="/admin/settings"
-                                element={<Settings />}
+                                path="/menu/cart/thank-you"
+                                element={<OrderComplete />}
                             />
-                        </Route>
-                        {/* 404 Page */}
-                        <Route path="*" element={<Page404 />} />
-                    </Routes>
-                    <Footer />
-                </AlertProvider>
+                            <Route
+                                path="/menu/cart/checkout"
+                                element={<Checkout />}
+                            />
+                            <Route
+                                path="/menu/item/:id"
+                                element={<ItemView />}
+                            />
+                            <Route path="/login" element={<LogIn />} />
+                            {/* Private Routes */}
+                            <Route element={<PrivateRoute />}>
+                                <Route path="/admin" element={<Dashboard />} />
+                                <Route
+                                    path="/admin/orders"
+                                    element={<Orders />}
+                                />
+                                <Route
+                                    path="/admin/items"
+                                    element={<Items />}
+                                />
+                                <Route
+                                    path="/admin/messages"
+                                    element={<Messages />}
+                                />
+                                <Route
+                                    path="/admin/emails"
+                                    element={<Emails />}
+                                />
+                                <Route
+                                    path="/admin/settings"
+                                    element={<Settings />}
+                                />
+                            </Route>
+                            {/* 404 Page */}
+                            <Route path="*" element={<Page404 />} />
+                        </Routes>
+                        <Footer />
+                    </AlertProvider>
+                </CartProvider>
             </AuthProvider>
         </BrowserRouter>
     );

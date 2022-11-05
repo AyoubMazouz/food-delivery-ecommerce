@@ -24,7 +24,7 @@ const useOrder = () => {
     // To make sure it doesn't sent request before ending the first one.
     const [loading, setLoading] = React.useState(false);
 
-    const addOrder = (fullName, phone, note, address, orders) => {
+    const addOrder = (fullName, phone, address, note, orders) => {
         return new Promise(async (resolve, reject) => {
             setLoading(true);
             const id = Timestamp.now().nanoseconds;

@@ -154,6 +154,13 @@ const useItem = () => {
         });
     };
 
+    const getItem = (id) =>
+        new Promise((resolve, reject) => {
+            getDoc(doc(db, "items", `${id}`))
+                .then((snap) => resolve(snap.data()))
+                .catch((err) => reject());
+        });
+
     const deleteItem = (id) => {
         return new Promise(async (resolve, reject) => {
             try {
@@ -173,6 +180,7 @@ const useItem = () => {
         itemIdExist,
         deleteItemImage,
         loading,
+        getItem,
     };
 };
 

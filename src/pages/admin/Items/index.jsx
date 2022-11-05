@@ -165,7 +165,12 @@ const Items = () => {
                                             className="col-span-5 font-light underline cursor-pointer"
                                             onClick={() =>
                                                 setCurrModel(
-                                                    <ViewItem {...item} />
+                                                    <ViewItem
+                                                        setCurrModel={
+                                                            setCurrModel
+                                                        }
+                                                        {...item}
+                                                    />
                                                 )
                                             }
                                         >

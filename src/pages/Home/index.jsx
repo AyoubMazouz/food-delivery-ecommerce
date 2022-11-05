@@ -1,6 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import AboutUs from "../../components/AboutUs";
+import Menu from "../../components/Menu";
 
 const Home = () => {
     React.useEffect(() => {
@@ -8,7 +9,7 @@ const Home = () => {
     }, []);
     return (
         <div className="flex justify-center">
-            <div className="w-full max-w-[1400px] space-y-16">
+            <div className="w-full max-w-[1400px] space-y-20">
                 {/* Hero */}
                 <div className="px-2 md:px-4 relative h-[77vh]">
                     <img
@@ -33,6 +34,8 @@ const Home = () => {
                 </div>
                 {/* AboutUs */}
                 <AboutUs />
+                {/* Menu */}
+                <Menu defaultTab="burger" />
             </div>
         </div>
     );

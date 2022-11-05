@@ -6,6 +6,7 @@ import SidePanel from "../components/SidePanel";
 import AddEmail from "./AddEmail";
 
 import { IcBin } from "../../../data/icons";
+import { useAlert } from "../../../contexts/AlertContext";
 
 const Emails = () => {
     const [currModel, setCurrModel] = React.useState(false);
@@ -13,6 +14,7 @@ const Emails = () => {
     const [updateTrigger, setUpdateTrigger] = React.useState(false);
 
     const { getEmails, deleteEmail } = useEmail();
+    const { setAlert } = useAlert();
 
     React.useEffect(() => {
         document.title = "Dashboard - Emails";
@@ -22,9 +24,14 @@ const Emails = () => {
         getEmails().then((emailsDoc) => setEmails(emailsDoc));
     }, [currModel, updateTrigger]);
 
-    const deleteHandle = (email) => {
-        deleteEmail(email);
-        setUpdateTrigger(!updateTrigger);
+    const deleteHandle = async (email) => {
+        try {
+            await deleteEmail(email);
+            setUpdateTrigger(!updateTrigger);
+            setAlert(["success", "Email has been deleted."]);
+        } catch (err) {
+            setAlert(["danger", "Something went wrong, please try again."]);
+        }
     };
 
     return (
@@ -61,7 +68,7 @@ const Emails = () => {
                                                 {email.email}
                                             </th>
                                             <th className="col-span-3 font-light">
-                                                {email.createdAt}
+                                                {email.createdAtStr}
                                             </th>
                                             <th className="col-span-1 flex gap-x-2">
                                                 <IcBin

@@ -15,7 +15,7 @@ const Footer = () => {
                     : "flex justify-center"
             }
         >
-            <footer className="grid md:grid-cols-2 gap-x-16 gap-y-10 justify-center w-full max-w-[1400px] px-2 md:px-4">
+            <footer className="grid md:grid-cols-2 gap-x-16 gap-y-10 justify-center w-full max-w-[1400px] px-2 md:px-4 mt-20">
                 <NewsLetter />
                 <ContactInfo />
                 <div className="col-span-full mt-8 h-[380px]">

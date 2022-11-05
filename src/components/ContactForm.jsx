@@ -1,4 +1,5 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
 // Hooks & Contexts.
 import { useAlert } from "../contexts/AlertContext";
 import useMessage from "../hooks/useMessage";
@@ -12,6 +13,8 @@ const ContactForm = () => {
     const { addMessage, loading } = useMessage();
     const { setAlert } = useAlert();
 
+    const navigate = useNavigate();
+
     const onSubmit = async (e) => {
         e.preventDefault();
 
@@ -22,9 +25,9 @@ const ContactForm = () => {
         try {
             await addMessage(messageDoc);
             setAlert(["success", "Message has been sent successfully!"]);
+            navigate("thank-you");
         } catch (err) {
-            if (err === "email_exist")
-                setAlert(["warn", "This Email is already on the list."]);
+            setAlert(["danger", "Something went wrong, please try again."]);
         }
     };
 

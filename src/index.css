@@ -18,7 +18,7 @@
         @apply hover:text-primary transition-all duration-300 cursor-pointer
     }
     .form-input {
-        @apply px-3 py-2 ring-dark/25 ring-2 focus:outline-none focus:ring-2 mt-1 focus:ring-primary disabled:bg-secondary disabled:text-dark/50 rounded w-full resize-y;
+        @apply px-3 py-2 border-dark/25 border-2 focus:outline-none focus:border-2 mt-1 focus:border-primary disabled:bg-secondary disabled:text-dark/50 rounded w-full resize-y;
     }
     .form-label {
         @apply font-light;
@@ -46,6 +46,8 @@
     }
 }
 
-.nth-child:nth-child(odd) {
-    @apply bg-secondary
+@layer utilities {
+    .nth-child:nth-child(odd) {
+        @apply bg-secondary
+    }
 }

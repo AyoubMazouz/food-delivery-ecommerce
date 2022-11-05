@@ -87,7 +87,7 @@ const ViewOrder = ({ order, setCurrModel }) => {
                 {order.orders.map((item) => (
                     <div className="font-light" key={item.id}>
                         <span>{item.label}: </span>
-                        <span>{item.size}</span>
+                        <span>{item.option}</span>
                         <span>{item.quantity}</span>
                     </div>
                 ))}

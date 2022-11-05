@@ -1,4 +1,3 @@
-import { BiCurrentLocation } from "react-icons/bi";
 import {
     RiMessage2Fill,
     RiDashboard2Fill,
@@ -6,9 +5,10 @@ import {
     RiEditBoxFill,
     RiAlarmWarningFill,
     RiStarSFill,
+    RiPhoneFill,
 } from "react-icons/ri";
-import { MdEmail } from "react-icons/md";
-import { BsFillPatchCheckFill, BsFillPhoneFill } from "react-icons/bs";
+import { MdEmail, MdLocationOn } from "react-icons/md";
+import { BsFillPatchCheckFill } from "react-icons/bs";
 import { VscChromeClose } from "react-icons/vsc";
 import { FiFolderPlus } from "react-icons/fi";
 import { FaTiktok } from "react-icons/fa";
@@ -24,11 +24,11 @@ import {
 } from "react-icons/ai";
 
 export const IcCart = AiOutlineShopping;
-export const IcPhone = BsFillPhoneFill;
+export const IcPhone = RiPhoneFill;
 export const IcFacebook = AiFillFacebook;
 export const IcInstagram = AiFillInstagram;
 export const IcTiktok = FaTiktok;
-export const IcAddress = BiCurrentLocation;
+export const IcAddress = MdLocationOn;
 export const IcEmail = MdEmail;
 export const IcClock = AiFillClockCircle;
 export const IcItem = SiNintendogamecube;
